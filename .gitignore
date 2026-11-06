@@ -1,0 +1,31 @@
+# Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+secrets.toml
+
+# Persistent local vector databases and storage
+data/chroma_db/
+chroma_db/
+*.sqlite3
+*.db
+*.log
+
+# OS artifacts
+.DS_Store
+Thumbs.db
