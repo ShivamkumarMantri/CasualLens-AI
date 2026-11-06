@@ -1,11 +1,16 @@
 # CausalLens AI — Research Decision Intelligence & Causal AI Platform
 **A Full-Stack Research-Level Data Science + Causal Inference + Generative AI Application**
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Streamlit%20Cloud-FF4B4B?style=for-the-badge&logo=streamlit)](https://casuallens-ai.streamlit.app/)
 [![Tests](https://img.shields.io/badge/pytest-66%20passed-brightgreen.svg)](tests/)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)](requirements.txt)
 [![Framework](https://img.shields.io/badge/Streamlit-1.40%2B-red.svg)](app.py)
 [![VectorDB](https://img.shields.io/badge/ChromaDB-Persistent-purple.svg)](src/rag.py)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
+> 🚀 **Live Production Deployment:** [https://casuallens-ai.streamlit.app/](https://casuallens-ai.streamlit.app/)
+> 
+> Explore the live interactive application directly in your browser with pre-loaded benchmarks (Lalonde job training, synthetic ground truth) and ChromaDB document intelligence.
 
 CausalLens AI bridges the gap between observational causal inference, structural decision-making, and generative AI. It combines automated data quality profiling, Judea Pearl's Structural Causal Models (DAGs), multi-model treatment effect estimation (OLS, Matching, IPW, Doubly Robust AIPW, Double Machine Learning), sensitivity analysis (E-values, refutation tests), Monte Carlo benchmarking, and an evidence-grounded LLM assistant audited for numerical faithfulness.
 
@@ -134,8 +139,8 @@ CausalLens AI establishes a strict scientific distinction between what must be *
 
 ### 1. Clone & Set Up Virtual Environment
 ```bash
-git clone https://github.com/YOUR_USERNAME/CausalLens-AI.git
-cd CausalLens-AI
+git clone https://github.com/ShivamkumarMantri/CasualLens-AI.git
+cd CasualLens-AI
 
 # Create virtual environment
 python -m venv .venv
@@ -180,6 +185,22 @@ Open `http://localhost:8501` in your browser.
 
 ## 🐳 Production & Cloud Deployment
 
+### 🌐 Streamlit Community Cloud (Live)
+CausalLens AI is hosted and live at:
+👉 **[https://casuallens-ai.streamlit.app/](https://casuallens-ai.streamlit.app/)**
+
+To deploy your own instance to Streamlit Community Cloud:
+1. Fork or push this repository to GitHub.
+2. Sign in to [share.streamlit.io](https://share.streamlit.io).
+3. Connect repository `CasualLens-AI`, select branch `main`, and main file path `app.py`.
+4. Under **Advanced settings → Secrets**, paste your API credentials:
+   ```toml
+   GEMINI_API_KEY = "your_actual_key_here"
+   GEMINI_MODEL = "gemini-3.5-flash-lite"
+   CHROMADB_PERSIST_DIR = "data/chroma_db"
+   ```
+5. Click **Deploy**.
+
 ### Docker Containerization
 ```dockerfile
 FROM python:3.11-slim
@@ -211,21 +232,23 @@ docker run -d -p 8501:8501 -v causallens_data:/app/data --name causallens causal
 
 ## 🧪 Automated Test Suite
 
-Run all 53 unit, regression, and integration tests:
+Run all 66 unit, regression, UI navigation, and integration tests:
 ```bash
 pytest -v
 ```
 
-All 53 tests pass with 100% success across:
+All 66 tests pass with 100% success across:
 - `tests/test_assistant_and_eval.py` (Numerical claim verification & assumptions audit)
 - `tests/test_benchmark.py` (Synthetic data generation & Monte Carlo coverage)
 - `tests/test_causal.py` (OLS, PSM, IPW, AIPW, DML, and multi-format dataset ingestion)
 - `tests/test_core.py` (Profiling, correlations, outliers, and SMDs)
 - `tests/test_dag.py` (Identification, d-separation, backdoor paths, cycle prevention)
 - `tests/test_e2e_pipeline.py` (Full research pipeline AST and page routing)
+- `tests/test_gemini_integration.py` (Live Google GenAI client, masking, and RAG synthesis)
 - `tests/test_rag.py` (Universal document ingestion, chunking, ChromaDB, and genuine evidence QA)
 - `tests/test_reporting.py` (Markdown, JSON reproducibility bundles, and HTML exports)
 - `tests/test_sensitivity.py` (VanderWeele E-Values and refutation battery)
+- `tests/test_ui_navigation.py` (App lifecycle, 8 workspaces, and execution flows)
 
 ---
 
